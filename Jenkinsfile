@@ -1,5 +1,5 @@
 pipeline {
-    agent {label "ubuntu docker"} 
+    agent any 
     environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-hub-inzein')
     }
