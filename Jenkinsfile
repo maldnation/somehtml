@@ -1,12 +1,12 @@
 pipeline {
-    agent any 
+    agent {label "docker"}
     environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-hub-inzein')
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/InZeinly/somehtml.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/html']], extensions: [], userRemoteConfigs: [[credentialsId: 'ubuntuMaster', url: 'git@github.com:InZeinly/somehtml.git']]])
             }
         }
 
