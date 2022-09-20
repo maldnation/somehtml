@@ -30,9 +30,9 @@ pipeline {
                 sh 'ssh -Ti ~/aws-terraform.pem ubuntu@ec2-3-73-42-4.eu-central-1.compute.amazonaws.com'
             }
         }
-        stage('whoami') {
+        stage("Pull image from Deploy") {
             steps{
-                sh "whoami"
+                sh 'docker pull inzein/htmlimage:47'
             }
         }
 }
