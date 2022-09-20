@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Connect to deploy') {
             steps{
-                sh 'ssh -T -i aws-terraform.pem ubuntu@ec2-3-72-113-93.eu-central-1.compute.amazonaws.com'
+                sh 'ssh -T -i ~/.aws-terraform.pem ubuntu@ec2-3-72-113-93.eu-central-1.compute.amazonaws.com'
             }
         }
 }
