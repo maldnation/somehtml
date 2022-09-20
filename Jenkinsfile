@@ -25,6 +25,11 @@ pipeline {
                 sh 'docker push inzein/htmlimage:$BUILD_NUMBER'
             }
         }
+        stage('Connect to deploy') {
+            steps{
+                sh 'ssh -T -i ./terraform/demotest/aws-terraform.pem ubuntu@ec2-3-72-113-93.eu-central-1.compute.amazonws.com'
+            }
+        }
 }
 post {
         always {
