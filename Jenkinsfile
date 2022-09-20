@@ -30,6 +30,9 @@ pipeline {
                 sh 'ssh -Ti ~/aws-terraform.pem ubuntu@ec2-3-73-42-4.eu-central-1.compute.amazonaws.com'
             }
         }
+        stage('whoami') {
+            steps{
+                sh "whoami"
 }
 post {
         always {
