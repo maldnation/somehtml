@@ -33,6 +33,8 @@ pipeline {
         stage('whoami') {
             steps{
                 sh "whoami"
+            }
+        }
 }
 post {
         always {
