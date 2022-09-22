@@ -35,7 +35,7 @@ pipeline {
                     exit 0
                     << EOF
                     """
-                    }
+                  }
                 }    
             }
         }
@@ -45,10 +45,9 @@ pipeline {
                 sh 'docker run --rm -p 8888:80 inzein/htmlimage:latest'
             }
         }
-}
+  }      
 post {
         always {
             sh 'docker logout'
         }
     }
-}
