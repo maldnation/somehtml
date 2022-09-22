@@ -25,6 +25,16 @@ pipeline {
                 sh 'docker push inzein/htmlimage:$BUILD_NUMBER'
             }
         }
+        stage('Connect to deploy') {
+            steps{
+                sh 'ssh -Ti ~/aws-terraform.pem ubuntu@ec2-3-73-42-4.eu-central-1.compute.amazonaws.com'
+            }
+        }
+        stage("Pull image from Deploy") {
+            steps{
+                sh 'docker pull inzein/htmlimage:47'
+            }
+        }
 }
 post {
         always {
