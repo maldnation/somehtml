@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t inzein/htmlimage:$BUILD_NUMBER .'
+                sh 'docker build -t inzein/htmlimage:latest .'
             }
         }
         stage('login to dockerhub') {
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push inzein/htmlimage:$BUILD_NUMBER'
+                sh 'docker push inzein/htmlimage:latest'
             }
         }
         stage('Connect to deploy') {
@@ -33,7 +33,7 @@ pipeline {
         stage("Pull image from Deploy") {
             steps{
                 //sh 'docker pull inzein/htmlimage:47'
-                sh 'docker run --rm -p 8888:80 inzein/htmimage:$BUILD_NUMBER'
+                sh 'docker run --rm -p 8888:80 inzein/htmimage:latest'
             }
         }
 }
