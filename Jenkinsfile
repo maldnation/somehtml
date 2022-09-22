@@ -30,7 +30,7 @@ pipeline {
                 sh 'ssh -T -o StrictHostKeyChecking=no -i ~/aws-terraform.pem ubuntu@ec2-3-73-78-110.eu-central-1.compute.amazonaws.com '
             }
         }
-        stage("Pull image from Deploy") {
+        stage("Run on Deploy server") {
             steps{
                 //sh 'docker pull inzein/htmlimage:47'
                 sh 'docker run --rm -p 8888:80 inzein/htmlimage:latest'
