@@ -33,7 +33,7 @@ pipeline {
         stage("Pull image from Deploy") {
             steps{
                 //sh 'docker pull inzein/htmlimage:47'
-                sh 'docker run -p 8888:80 inzein/htmimage:latest'
+                sh 'docker run -t -d -p 8888:80 inzein/htmimage:latest'
             }
         }
 }
