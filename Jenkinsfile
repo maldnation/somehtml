@@ -1,7 +1,7 @@
 pipeline {
     agent {label "docker"}
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('docker-hub-inzein')
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages { 
         stage('SCM Checkout') {
@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Connect to deploy') {
             steps{
-                sh 'ssh -Ti ~/aws-terraform.pem ubuntu@ec2-3-73-42-4.eu-central-1.compute.amazonaws.com'
+                sh 'ssh -Ti -o StrictHostKeyChecking=no -i ~/aws-terraform.pem ssh -i "aws-terraform.pem" ubuntu@ec2-3-73-78-110.eu-central-1.compute.amazonaws.com '
             }
         }
         stage("Pull image from Deploy") {
